@@ -5,9 +5,10 @@
 ========================================================== */
 
 /* ==========================================================
-   1. GOOGLE FONTS IMPORT
+   1. FONTS IMPORT
 ========================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/proxima-nova');
 
 /* ==========================================================
    2. DESIGN TOKENS & CSS VARIABLES
@@ -18,25 +19,25 @@
     --gl-clr-primary-light: #4E8B68;
     --gl-clr-primary-dark: #234637;
     --gl-clr-accent: #88A97D;
-    
+
     /* Backgrounds & Surfaces */
     --gl-clr-bg: #F8F7F3;
     --gl-clr-surface: #FFFFFF;
     --gl-clr-surface-alt: #F3F2ED;
-    
+
     /* Neutral Text & Borders */
     --gl-clr-text: #1F2622;
     --gl-clr-text-light: #5D665F;
     --gl-clr-border: #D8DDD6;
-    
+
     /* Status Colors */
     --gl-clr-success: #4D8D59;
     --gl-clr-warning: #D9A441;
     --gl-clr-danger: #B84B4B;
 
     /* Typography Families */
-    --gl-font-heading: 'Cormorant Garamond', Georgia, serif;
-    --gl-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --gl-font-heading: 'Quattrocento', Georgia, serif;
+    --gl-font-body: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     /* Fluid Typography Scale */
     --gl-fs-display: clamp(3.2rem, 6.5vw, 5.8rem);
@@ -157,7 +158,8 @@ a {
     text-decoration: none;
 }
 
-ul, ol {
+ul,
+ol {
     list-style: none;
 }
 
@@ -192,18 +194,34 @@ ul, ol {
 /* ==========================================================
    4. TYPOGRAPHY SYSTEM
 ========================================================== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--gl-font-heading);
-    font-weight: var(--gl-fw-semibold);
+    font-weight: var(--gl-fw-bold);
     line-height: var(--gl-lh-heading);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     color: var(--gl-clr-text);
 }
 
-h1 { font-size: var(--gl-fs-h1); }
-h2 { font-size: var(--gl-fs-h2); }
-h3 { font-size: var(--gl-fs-h3); }
-h4 { font-size: var(--gl-fs-h4); }
+h1 {
+    font-size: var(--gl-fs-h1);
+}
+
+h2 {
+    font-size: var(--gl-fs-h2);
+}
+
+h3 {
+    font-size: var(--gl-fs-h3);
+}
+
+h4 {
+    font-size: var(--gl-fs-h4);
+}
 
 .gl-display {
     font-size: var(--gl-fs-display);
@@ -287,40 +305,124 @@ strong {
 }
 
 /* Flex Utilities */
-.gl-flex { display: flex; }
-.gl-flex-center { display: flex; align-items: center; justify-content: center; }
-.gl-flex-between { display: flex; justify-content: space-between; align-items: center; }
-.gl-flex-column { display: flex; flex-direction: column; }
-.gl-flex-wrap { flex-wrap: wrap; }
+.gl-flex {
+    display: flex;
+}
+
+.gl-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gl-flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gl-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.gl-flex-wrap {
+    flex-wrap: wrap;
+}
 
 /* Spacing & Alignments */
-.gl-gap-xs { gap: 0.5rem; }
-.gl-gap-sm { gap: 1rem; }
-.gl-gap-md { gap: 1.5rem; }
-.gl-gap-lg { gap: 2.25rem; }
-.gl-gap-xl { gap: 3.5rem; }
+.gl-gap-xs {
+    gap: 0.5rem;
+}
 
-.gl-mt-xs { margin-top: 0.5rem; }
-.gl-mt-sm { margin-top: 1rem; }
-.gl-mt-md { margin-top: 2rem; }
-.gl-mt-lg { margin-top: 3rem; }
-.gl-mt-xl { margin-top: 5rem; }
+.gl-gap-sm {
+    gap: 1rem;
+}
 
-.gl-mb-xs { margin-bottom: 0.5rem; }
-.gl-mb-sm { margin-bottom: 1rem; }
-.gl-mb-md { margin-bottom: 2rem; }
-.gl-mb-lg { margin-bottom: 3rem; }
-.gl-mb-xl { margin-bottom: 5rem; }
+.gl-gap-md {
+    gap: 1.5rem;
+}
 
-.gl-text-center { text-align: center; }
-.gl-text-left { text-align: left; }
-.gl-text-right { text-align: right; }
-.gl-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+.gl-gap-lg {
+    gap: 2.25rem;
+}
 
-.gl-w-full { width: 100%; }
-.gl-relative { position: relative; }
-.gl-absolute { position: absolute; }
-.gl-overflow-hidden { overflow: hidden; }
+.gl-gap-xl {
+    gap: 3.5rem;
+}
+
+.gl-mt-xs {
+    margin-top: 0.5rem;
+}
+
+.gl-mt-sm {
+    margin-top: 1rem;
+}
+
+.gl-mt-md {
+    margin-top: 2rem;
+}
+
+.gl-mt-lg {
+    margin-top: 3rem;
+}
+
+.gl-mt-xl {
+    margin-top: 5rem;
+}
+
+.gl-mb-xs {
+    margin-bottom: 0.5rem;
+}
+
+.gl-mb-sm {
+    margin-bottom: 1rem;
+}
+
+.gl-mb-md {
+    margin-bottom: 2rem;
+}
+
+.gl-mb-lg {
+    margin-bottom: 3rem;
+}
+
+.gl-mb-xl {
+    margin-bottom: 5rem;
+}
+
+.gl-text-center {
+    text-align: center;
+}
+
+.gl-text-left {
+    text-align: left;
+}
+
+.gl-text-right {
+    text-align: right;
+}
+
+.gl-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.gl-w-full {
+    width: 100%;
+}
+
+.gl-relative {
+    position: relative;
+}
+
+.gl-absolute {
+    position: absolute;
+}
+
+.gl-overflow-hidden {
+    overflow: hidden;
+}
 
 /* ==========================================================
    6. UI COMPONENTS
@@ -600,10 +702,12 @@ textarea.gl-input {
    8. RESPONSIVE BREAKPOINTS
 ========================================================== */
 @media (max-width: 991px) {
-    .gl-grid-4, .gl-grid-3 {
+
+    .gl-grid-4,
+    .gl-grid-3 {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .gl-grid-2 {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -615,7 +719,10 @@ textarea.gl-input {
 }
 
 @media (max-width: 767px) {
-    .gl-grid-4, .gl-grid-3, .gl-grid-2 {
+
+    .gl-grid-4,
+    .gl-grid-3,
+    .gl-grid-2 {
         grid-template-columns: 1fr;
     }
 
@@ -629,6 +736,7 @@ textarea.gl-input {
    9. ACCESSIBILITY & REDUCED MOTION
 ========================================================== */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
