@@ -1,0 +1,652 @@
+/* ==========================================================
+   GREENLIFE UI FRAMEWORK v2.0 (ENTERPRISE PRODUCTION BUNDLE)
+   Target Engine: GoHighLevel (GHL) Landing Pages, Funnels & Websites
+   Architecture: Token-Driven, Zero-Duplication, High-Performance CSS
+========================================================== */
+
+/* ==========================================================
+   1. GOOGLE FONTS IMPORT
+========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================
+   2. DESIGN TOKENS & CSS VARIABLES
+========================================================== */
+:root {
+    /* Brand Palette */
+    --gl-clr-primary: #2F5D4B;
+    --gl-clr-primary-light: #4E8B68;
+    --gl-clr-primary-dark: #234637;
+    --gl-clr-accent: #88A97D;
+    
+    /* Backgrounds & Surfaces */
+    --gl-clr-bg: #F8F7F3;
+    --gl-clr-surface: #FFFFFF;
+    --gl-clr-surface-alt: #F3F2ED;
+    
+    /* Neutral Text & Borders */
+    --gl-clr-text: #1F2622;
+    --gl-clr-text-light: #5D665F;
+    --gl-clr-border: #D8DDD6;
+    
+    /* Status Colors */
+    --gl-clr-success: #4D8D59;
+    --gl-clr-warning: #D9A441;
+    --gl-clr-danger: #B84B4B;
+
+    /* Typography Families */
+    --gl-font-heading: 'Cormorant Garamond', Georgia, serif;
+    --gl-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Fluid Typography Scale */
+    --gl-fs-display: clamp(3.2rem, 6.5vw, 5.8rem);
+    --gl-fs-h1: clamp(2.5rem, 4.8vw, 4.2rem);
+    --gl-fs-h2: clamp(2.0rem, 3.8vw, 3.2rem);
+    --gl-fs-h3: clamp(1.6rem, 2.8vw, 2.3rem);
+    --gl-fs-h4: clamp(1.25rem, 2.0vw, 1.65rem);
+    --gl-fs-body-lg: clamp(1.1rem, 1.4vw, 1.25rem);
+    --gl-fs-body: 1rem;
+    --gl-fs-small: 0.88rem;
+
+    /* Line Heights */
+    --gl-lh-tight: 1.08;
+    --gl-lh-heading: 1.16;
+    --gl-lh-body: 1.7;
+
+    /* Font Weights */
+    --gl-fw-light: 300;
+    --gl-fw-regular: 400;
+    --gl-fw-medium: 500;
+    --gl-fw-semibold: 600;
+    --gl-fw-bold: 700;
+
+    /* Layout Containers */
+    --gl-container: 1280px;
+    --gl-container-wide: 1440px;
+    --gl-container-narrow: 860px;
+    --gl-section-space: clamp(4.5rem, 9vw, 8.5rem);
+
+    /* Border Radius System */
+    --gl-radius-xs: 6px;
+    --gl-radius-sm: 12px;
+    --gl-radius-md: 20px;
+    --gl-radius-lg: 30px;
+    --gl-radius-xl: 44px;
+    --gl-radius-pill: 999px;
+
+    /* Elevation & Shadows */
+    --gl-shadow-sm: 0 4px 14px rgba(31, 38, 34, 0.04);
+    --gl-shadow-md: 0 14px 35px rgba(31, 38, 34, 0.07);
+    --gl-shadow-lg: 0 28px 60px rgba(31, 38, 34, 0.12);
+
+    /* Transitions */
+    --gl-transition-fast: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    --gl-transition: 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    --gl-transition-slow: 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+
+    /* Z-Index Hierarchy */
+    --gl-z-base: 1;
+    --gl-z-overlay: 5;
+    --gl-z-content: 10;
+    --gl-z-floating: 20;
+    --gl-z-header: 100;
+    --gl-z-dropdown: 200;
+    --gl-z-modal: 500;
+}
+
+/* ==========================================================
+   3. MODERN CSS RESET & FOUNDATION
+========================================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+}
+
+/* Smooth scroll handling when Lenis is NOT active */
+html:not(.lenis) {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--gl-font-body);
+    font-size: var(--gl-fs-body);
+    line-height: var(--gl-lh-body);
+    color: var(--gl-clr-text);
+    background-color: var(--gl-clr-bg);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--gl-clr-primary-light);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* FOUC Protection: Keep content visible by default if JS fails */
+[data-gl],
+.gl-js-reveal,
+.gl-js-reveal-left,
+.gl-js-reveal-right,
+.gl-js-scale,
+.gl-js-split {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Only hide if engine successfully mounts & initializes elements */
+.gl-init-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Hardware Acceleration Helper (Applied ONLY when active) */
+.gl-animating {
+    will-change: transform, opacity;
+}
+
+/* ==========================================================
+   4. TYPOGRAPHY SYSTEM
+========================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--gl-font-heading);
+    font-weight: var(--gl-fw-semibold);
+    line-height: var(--gl-lh-heading);
+    letter-spacing: -0.02em;
+    color: var(--gl-clr-text);
+}
+
+h1 { font-size: var(--gl-fs-h1); }
+h2 { font-size: var(--gl-fs-h2); }
+h3 { font-size: var(--gl-fs-h3); }
+h4 { font-size: var(--gl-fs-h4); }
+
+.gl-display {
+    font-size: var(--gl-fs-display);
+    line-height: var(--gl-lh-tight);
+}
+
+p {
+    color: var(--gl-clr-text-light);
+    margin-bottom: 1rem;
+    max-width: 68ch;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+    font-weight: var(--gl-fw-bold);
+    color: var(--gl-clr-text);
+}
+
+/* Screen Reader Accessible Wrappers for SplitType */
+.gl-sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* ==========================================================
+   5. LAYOUT & GRID UTILITIES
+========================================================== */
+.gl-container {
+    width: min(calc(100% - 2.5rem), var(--gl-container));
+    margin-inline: auto;
+}
+
+.gl-container-wide {
+    width: min(calc(100% - 2.5rem), var(--gl-container-wide));
+    margin-inline: auto;
+}
+
+.gl-container-narrow {
+    width: min(calc(100% - 2.5rem), var(--gl-container-narrow));
+    margin-inline: auto;
+}
+
+.gl-section {
+    padding-block: var(--gl-section-space);
+    position: relative;
+}
+
+/* Responsive CSS Grid System */
+.gl-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.gl-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.gl-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.gl-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+/* Flex Utilities */
+.gl-flex { display: flex; }
+.gl-flex-center { display: flex; align-items: center; justify-content: center; }
+.gl-flex-between { display: flex; justify-content: space-between; align-items: center; }
+.gl-flex-column { display: flex; flex-direction: column; }
+.gl-flex-wrap { flex-wrap: wrap; }
+
+/* Spacing & Alignments */
+.gl-gap-xs { gap: 0.5rem; }
+.gl-gap-sm { gap: 1rem; }
+.gl-gap-md { gap: 1.5rem; }
+.gl-gap-lg { gap: 2.25rem; }
+.gl-gap-xl { gap: 3.5rem; }
+
+.gl-mt-xs { margin-top: 0.5rem; }
+.gl-mt-sm { margin-top: 1rem; }
+.gl-mt-md { margin-top: 2rem; }
+.gl-mt-lg { margin-top: 3rem; }
+.gl-mt-xl { margin-top: 5rem; }
+
+.gl-mb-xs { margin-bottom: 0.5rem; }
+.gl-mb-sm { margin-bottom: 1rem; }
+.gl-mb-md { margin-bottom: 2rem; }
+.gl-mb-lg { margin-bottom: 3rem; }
+.gl-mb-xl { margin-bottom: 5rem; }
+
+.gl-text-center { text-align: center; }
+.gl-text-left { text-align: left; }
+.gl-text-right { text-align: right; }
+.gl-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+
+.gl-w-full { width: 100%; }
+.gl-relative { position: relative; }
+.gl-absolute { position: absolute; }
+.gl-overflow-hidden { overflow: hidden; }
+
+/* ==========================================================
+   6. UI COMPONENTS
+========================================================== */
+
+/* Button System */
+.gl-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.95rem 2rem;
+    border-radius: var(--gl-radius-pill);
+    font-weight: var(--gl-fw-semibold);
+    font-size: 0.95rem;
+    line-height: 1;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform var(--gl-transition-fast), background-color var(--gl-transition-fast), border-color var(--gl-transition-fast), box-shadow var(--gl-transition-fast);
+}
+
+.gl-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--gl-transition-fast);
+}
+
+.gl-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Button Variants */
+.gl-btn-primary {
+    background-color: var(--gl-clr-primary);
+    color: #ffffff;
+    box-shadow: var(--gl-shadow-sm);
+}
+
+.gl-btn-primary:hover {
+    background-color: var(--gl-clr-primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--gl-shadow-md);
+}
+
+.gl-btn-secondary {
+    background-color: var(--gl-clr-surface);
+    color: var(--gl-clr-primary);
+    border: 1px solid var(--gl-clr-border);
+}
+
+.gl-btn-secondary:hover {
+    background-color: var(--gl-clr-surface-alt);
+    border-color: var(--gl-clr-primary-light);
+    transform: translateY(-3px);
+}
+
+.gl-btn-outline {
+    border: 2px solid var(--gl-clr-primary);
+    color: var(--gl-clr-primary);
+    background-color: transparent;
+}
+
+.gl-btn-outline:hover {
+    background-color: var(--gl-clr-primary);
+    color: #ffffff;
+}
+
+.gl-btn-ghost {
+    padding: 0.5rem 0;
+    border-radius: 0;
+    color: var(--gl-clr-primary);
+}
+
+.gl-btn-ghost:hover {
+    color: var(--gl-clr-primary-dark);
+}
+
+/* Button Shine Micro-Interaction */
+.gl-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.8s ease;
+    z-index: -1;
+}
+
+.gl-btn:hover::after {
+    left: 140%;
+}
+
+/* Card System */
+.gl-card {
+    background-color: var(--gl-clr-surface);
+    border-radius: var(--gl-radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid rgba(216, 221, 214, 0.6);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--gl-transition), box-shadow var(--gl-transition), border-color var(--gl-transition);
+}
+
+.gl-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gl-clr-border);
+    box-shadow: var(--gl-shadow-md);
+}
+
+/* Glassmorphism Panel */
+.gl-glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--gl-shadow-md);
+}
+
+/* Stat Box */
+.gl-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.gl-stat-number {
+    font-family: var(--gl-font-heading);
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: var(--gl-fw-bold);
+    color: var(--gl-clr-primary);
+    line-height: 1;
+}
+
+.gl-stat-label {
+    font-size: var(--gl-fs-small);
+    color: var(--gl-clr-text-light);
+    font-weight: var(--gl-fw-medium);
+}
+
+/* Section Header */
+.gl-section-header {
+    max-width: 720px;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.gl-section-header.gl-center {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.gl-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: var(--gl-fw-bold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gl-clr-primary);
+}
+
+/* Form Inputs */
+.gl-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.gl-input {
+    width: 100%;
+    padding: 0.95rem 1.25rem;
+    border-radius: var(--gl-radius-sm);
+    border: 1px solid var(--gl-clr-border);
+    background-color: var(--gl-clr-surface);
+    transition: border-color var(--gl-transition-fast), box-shadow var(--gl-transition-fast);
+}
+
+.gl-input:focus {
+    outline: none;
+    border-color: var(--gl-clr-primary);
+    box-shadow: 0 0 0 4px rgba(47, 93, 75, 0.1);
+}
+
+textarea.gl-input {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Reading Progress Bar */
+.gl-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--gl-clr-primary);
+    transform-origin: left center;
+    transform: scaleX(0);
+    z-index: var(--gl-z-modal);
+    pointer-events: none;
+}
+
+/* Marquee Track */
+.gl-marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 2rem;
+}
+
+.gl-marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2rem;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+/* Image Reveal Mask */
+.gl-mask {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--gl-radius-md);
+}
+
+.gl-mask img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.gl-mask:hover img {
+    transform: scale(1.06);
+}
+
+/* ==========================================================
+   7. VISUAL EFFECTS & DECORATIONS
+========================================================== */
+.gl-noise {
+    position: relative;
+    isolation: isolate;
+}
+
+.gl-noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: var(--gl-z-base);
+}
+
+.gl-vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 55%, rgba(0, 0, 0, 0.08));
+    pointer-events: none;
+}
+
+.gl-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--gl-clr-border);
+    margin: 3.5rem 0;
+}
+
+/* ==========================================================
+   8. RESPONSIVE BREAKPOINTS
+========================================================== */
+@media (max-width: 991px) {
+    .gl-grid-4, .gl-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gl-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    :root {
+        --gl-section-space: clamp(3.5rem, 7vw, 5.5rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .gl-grid-4, .gl-grid-3, .gl-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .gl-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================
+   9. ACCESSIBILITY & REDUCED MOTION
+========================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .gl-init-hidden,
+    [data-gl],
+    .gl-js-reveal,
+    .gl-js-reveal-left,
+    .gl-js-reveal-right,
+    .gl-js-scale,
+    .gl-js-split {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+}
