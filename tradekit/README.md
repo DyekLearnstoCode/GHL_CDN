@@ -1,13 +1,13 @@
 # TradeKit
 
-Shared CSS for GoHighLevel trade-business websites (`tk-` prefix). One file, versioned by git tag.
+Shared CSS for GoHighLevel trade-business websites (`tk-` prefix). One file, pinned by commit hash or tag.
 
 ## Use on a site
 
 1. GHL: Settings > Tracking & scripts > Head tracking code. Add the stylesheet link, then the client's colour overrides **after** it:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DyekLearnstoCode/GHL_CDN@tradekit-v0.1.2/tradekit/tradekit.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DyekLearnstoCode/GHL_CDN@6d66992/tradekit/tradekit.min.css">
 <style>
 :root {
     --tk-accent: #______;
@@ -27,7 +27,7 @@ Shared CSS for GoHighLevel trade-business websites (`tk-` prefix). One file, ver
 
 ## Versions
 
-Always pin a tag in the URL (`@tradekit-v0.1.2`). `@main` is cached for up to 12 hours and will change under live sites. To update a site, change the tag in its head link. See `CHANGELOG.md`.
+Always pin a version in the URL: a commit hash (`@6d66992` is 0.1.2) or, once created, a git tag such as `tradekit-v0.1.2`. `@main` is cached for up to 12 hours and will change under live sites. To update a site, change the pinned value in its head link. See `CHANGELOG.md`.
 
 ## Rules
 
